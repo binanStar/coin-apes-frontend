@@ -10,7 +10,7 @@
     </div>
   </div>
 
-  <RedditFilters class="justify-center"></RedditFilters>
+  <RedditFilters class="justify-center mt-12"></RedditFilters>
 </template>
 
 <script lang="ts">

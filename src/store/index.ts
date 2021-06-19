@@ -1,15 +1,15 @@
 import { createStore } from 'vuex';
-import { SubredditState, SubredditModule, Store as SubredditStore } from './modules/subreddit';
+import { RedditState, RedditModule, Store as SubredditStore } from './modules/reddit';
 
 export type State = {
-  subreddit: SubredditState;
+  reddit: RedditState;
 };
 
-export type Store = SubredditStore<Pick<State, 'subreddit'>>;
+export type Store = SubredditStore<Pick<State, 'reddit'>>;
 
 export const store = createStore({
   modules: {
-    SubredditModule,
+    RedditModule,
   },
 });
 

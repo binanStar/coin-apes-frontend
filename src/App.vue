@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-xinetic">
     <router-view></router-view>
   </div>
 </template>

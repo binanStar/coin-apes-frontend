@@ -136,7 +136,6 @@
   padding-right: 9px;
 }
 .multiselect-tag {
-  background: #41b883;
   color: #fff;
   font-size: 14px;
   font-weight: 600;
@@ -148,6 +147,7 @@
   align-items: center;
   cursor: text;
   white-space: nowrap;
+  @apply bg-violet;
 }
 .multiselect-tag i {
   cursor: pointer;
@@ -225,11 +225,11 @@
   cursor: not-allowed;
 }
 .multiselect-option.is-selected {
-  background: #41b883;
   color: #fff;
+  @apply bg-violet;
 }
 .multiselect-option.is-selected.is-pointed {
-  background: #4fbd8c;
+  @apply bg-violet;
 }
 .is-multiple .multiselect-option.is-selected,
 .is-tags .multiselect-option.is-selected {
