@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center h-[40px] p-4 m-0 text-sm text-white">
-    <img v-if="isIconVisible()" class="h-[24px] w-[24px] mr-2 rounded-full" :src="icon" />
+    <img v-if="isIconVisible()" class="w-[24px] mr-2" :class="iconStyle" :src="icon" />
     <p>{{ label }}</p>
   </div>
 </template>
@@ -12,6 +12,7 @@ export default defineComponent({
   props: {
     label: String,
     icon: String,
+    iconStyle: String,
   },
   methods: {
     isIconVisible() {

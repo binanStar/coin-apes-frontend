@@ -1,23 +1,27 @@
 <template>
-  <div class="container flex space-x-4 flex-row mx-auto">
+  <div class="container flex md:flex-row items-center xl:justify-start flex-col flex-wrap mx-auto">
     <div class="filter-container">
       <p class="dropdown-label">Subreddit</p>
       <Multiselect
-        class="dropdown dropdown-lg"
+        class="filter filter-lg"
         v-model="selectedSubreddit"
         :options="subreddits"
         mode="multiple"
         placeholder="Select a Subreddit"
       >
         <template v-slot:option="{ option }">
-          <DropdownOption :label="option.label" :icon="option.image" />
+          <DropdownOption
+            :label="option.label"
+            :icon="option.image"
+            :iconStyle="'rounded-full w-[24px]'"
+          />
         </template>
       </Multiselect>
     </div>
     <div class="filter-container">
       <p class="dropdown-label">Period</p>
       <Multiselect
-        class="dropdown dropdown-sm"
+        class="filter filter-sm"
         v-model="selectedInterval"
         :options="intervals"
         :maxHeight="intervalsDropdownHeight"
@@ -31,28 +35,37 @@
     <div class="filter-container">
       <p class="dropdown-label">Category</p>
       <Multiselect
-        class="dropdown dropdown-sm"
+        class="filter filter-sm"
         v-model="selectedCategory"
         :options="categories"
         placeholder="Select a category"
       >
         <template v-slot:option="{ option }">
-          <DropdownOption :label="option.label" />
+          <DropdownOption :label="option.label" :icon="option.image" :iconStyle="'w-[18px]'" />
         </template>
       </Multiselect>
     </div>
-    <div class="filter-container">
-      <p class="dropdown-label">View Type</p>
-      <Multiselect
-        class="dropdown dropdown-sm"
-        v-model="selectedViewType"
-        :options="viewTypes"
-        placeholder="Select a view Type"
-      >
-        <template v-slot:option="{ option }">
-          <DropdownOption :label="option.label" />
-        </template>
-      </Multiselect>
+    <div
+      class="
+        flex flex-row
+        items-center
+        m-2
+        mt-5
+        md:self-end
+        xl:ml-auto
+        w-max
+        bg-grey
+        rounded-md
+        filter-lg
+        h-[40px]
+      "
+    >
+      <img src="/src/assets/search.svg" class="w-4 h-4 ml-4" />
+      <input
+        type="text"
+        placeholder="Search"
+        class="filter filter-lg text-sm focus:outline-none ml-2"
+      />
     </div>
   </div>
 </template>
@@ -97,6 +110,8 @@ export default defineComponent({
     const selectedViewType = ref<DropdownItem>();
     selectedViewType.value = { label: '', value: '', image: '' };
 
+    console.log(categories);
+
     const viewTypes = ref<Array<DropdownItem>>();
     viewTypes.value = Object.values(ResultsViewType).map((s) => resultsViewTypeToDropdownItem(s));
 
@@ -117,17 +132,17 @@ export default defineComponent({
 
 <style scoped lang="postcss">
 .filter-container {
-  @apply flex-col w-max;
+  @apply flex-col w-max m-2;
 }
-.dropdown {
+.filter {
   @apply h-[40px] rounded-md bg-grey p-0 text-white;
 }
 
-.dropdown-sm {
-  @apply w-[214px];
+.filter-sm {
+  @apply md:w-[214px] w-[329px];
 }
 
-.dropdown-lg {
+.filter-lg {
   @apply w-[329px];
 }
 
