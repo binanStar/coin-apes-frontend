@@ -1,5 +1,5 @@
 <template>
-  <div class="h-6 rounded-r-full bg-red" :style="{ width: width + 'px' }"></div>
+  <div class="h-6 rounded-r-full" :style="{ width: width + 'px', backgroundColor: color }"></div>
 </template>
 
 <script lang="ts">
@@ -11,15 +11,14 @@ export default defineComponent({
       type: Number,
       required: true,
     },
-    color: String,
+    color: {
+      type: String,
+    },
   },
   setup(props) {
-    // col size * 2
-    const maxWidth = 99 * 2;
+    // col size * 3 + 16 (one space)
+    const maxWidth = 99 * 3 + 16;
     const width = Math.floor((maxWidth * props.value) / 100);
-
-    console.log(maxWidth);
-    console.log(width);
 
     return {
       width,

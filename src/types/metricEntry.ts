@@ -1,10 +1,10 @@
 export interface MetricEntry {
-  rank: Number;
+  rank: number;
   image: string;
   name: string;
   symbol: string;
-  value: Number;
-  valueAsPercentage: Number;
+  value: number;
+  valueAsPercentage: number;
   dates: Array<Date>;
-  sentiment: Number;
+  sentiment: number;
 }
