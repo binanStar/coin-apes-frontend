@@ -28,7 +28,10 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      borderRadius: ['last'],
+      backgroundColor: ['last'],
+    },
   },
   plugins: [],
 };

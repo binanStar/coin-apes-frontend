@@ -1,5 +1,16 @@
 <template>
-  <div class="container flex md:flex-row items-center xl:justify-start flex-col flex-wrap mx-auto">
+  <div
+    class="
+      container
+      flex
+      md:gap-x-4
+      md:flex-row
+      items-center
+      xl:justify-start
+      flex-col flex-wrap
+      mx-auto
+    "
+  >
     <div class="filter-container">
       <p class="dropdown-label">Subreddit</p>
       <Multiselect
@@ -21,7 +32,7 @@
     <div class="filter-container">
       <p class="dropdown-label">Period</p>
       <Multiselect
-        class="filter filter-sm"
+        class="filter filter-lg"
         v-model="selectedInterval"
         :options="intervals"
         :maxHeight="intervalsDropdownHeight"
@@ -35,7 +46,7 @@
     <div class="filter-container">
       <p class="dropdown-label">Category</p>
       <Multiselect
-        class="filter filter-sm"
+        class="filter filter-lg"
         v-model="selectedCategory"
         :options="categories"
         placeholder="Select a category"
@@ -46,26 +57,16 @@
       </Multiselect>
     </div>
     <div
-      class="
-        flex flex-row
-        items-center
-        m-2
-        mt-5
-        md:self-end
-        xl:ml-auto
-        w-max
-        bg-grey
-        rounded-md
-        filter-lg
-        h-[40px]
-      "
+      class="flex flex-row relative items-center mt-6 w-max bg-grey rounded-md filter-lg h-[40px]"
     >
       <img src="/src/assets/search.svg" class="w-4 h-4 ml-4" />
       <input
         type="text"
         placeholder="Search"
+        v-model="searchText"
         class="filter filter-lg text-sm focus:outline-none ml-2"
       />
+      <a v-if="searchText" v-on:click.prevent="clearClicked" class="multiselect-clear"></a>
     </div>
   </div>
 </template>
@@ -107,13 +108,12 @@ export default defineComponent({
     const categories = ref<Array<DropdownItem>>();
     categories.value = Object.values(MetricModel).map((s) => metricModelToDropdownItem(s));
 
-    const selectedViewType = ref<DropdownItem>();
-    selectedViewType.value = { label: '', value: '', image: '' };
+    const searchText = ref<string>();
+    searchText.value = '';
 
-    console.log(categories);
-
-    const viewTypes = ref<Array<DropdownItem>>();
-    viewTypes.value = Object.values(ResultsViewType).map((s) => resultsViewTypeToDropdownItem(s));
+    const clearClicked = () => {
+      searchText.value = '';
+    };
 
     return {
       selectedSubreddit,
@@ -123,8 +123,8 @@ export default defineComponent({
       intervalsDropdownHeight,
       selectedCategory,
       categories,
-      selectedViewType,
-      viewTypes,
+      searchText,
+      clearClicked,
     };
   },
 });
@@ -132,7 +132,7 @@ export default defineComponent({
 
 <style scoped lang="postcss">
 .filter-container {
-  @apply flex-col w-max m-2;
+  @apply flex-col w-max mt-2 mb-2;
 }
 .filter {
   @apply h-[40px] rounded-md bg-grey p-0 text-white;

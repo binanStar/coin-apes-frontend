@@ -196,7 +196,7 @@
   z-index: 100;
   display: flex;
   flex-direction: column;
-  @apply bg-grey rounded-b-md pt-[5px];
+  @apply bg-grey rounded-b-md pt-[5px] shadow-md;
 }
 .open-top .multiselect-options {
   transform: translateY(-100%);
