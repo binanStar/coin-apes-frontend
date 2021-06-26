@@ -10,7 +10,7 @@
             :entry="entry"
             v-for="entry in entries"
             :key="entry.id"
-            class="last:rounded-b-md"
+            class="last:rounded-b-md border-t-2 border-[#585879]"
           />
         </tbody>
       </table>

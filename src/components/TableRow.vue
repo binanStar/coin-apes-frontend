@@ -1,37 +1,37 @@
 <template>
   <tr class="grid w-[1364px] grid-cols-12 gap-4 grid-rows-1 h-20 bg-grey">
-    <div class="col-span-1 flex justify-center items-center">
+    <td class="col-span-1 flex justify-center items-center">
       <p class="text-white text-sm">{{ entry.rank }}</p>
-    </div>
-    <div class="col-span-2 flex flex-row items-center">
+    </td>
+    <td class="col-span-2 flex flex-row items-center">
       <img class="h-8 w-8 rounded-full ml-2" :src="entry.image" />
       <p class="text-white text-sm ml-4">{{ entry.name }}</p>
       <p class="text-white text-sm font-medium ml-4">{{ entry.symbol }}</p>
-    </div>
-    <div class="flex col-span-3 items-center">
+    </td>
+    <td class="flex col-span-3 items-center">
       <TableMentionsBar
         class="ml-2 mr-2"
         :value="entry.valueAsPercentage"
         :color="dominantColor"
       ></TableMentionsBar>
-    </div>
-    <div class="flex col-span-1 justify-end items-center">
+    </td>
+    <td class="flex col-span-1 justify-end items-center">
       <p class="text-white text-sm font-medium mr-2">{{ entry.value }}</p>
-    </div>
-    <div class="flex col-span-1 justify-end items-center">
+    </td>
+    <td class="flex col-span-1 justify-end items-center">
       <p class="text-white text-sm font-medium mr-2">{{ entry.valueAsPercentage + '%' }}</p>
-    </div>
-    <div class="flex col-span-2 mt-4 mb-4 mr-2 items-cente">
+    </td>
+    <td class="flex col-span-2 mt-4 mb-4 mr-2 items-cente">
       <Vue3ChartJs
         :type="lineChart.type"
         :data="lineChart.data"
         :options="lineChart.options"
         ref="chartRef"
       ></Vue3ChartJs>
-    </div>
-    <div class="flex col-span-2 items-center">
+    </td>
+    <td class="flex col-span-2 items-center">
       <TableSentimentBar class="ml-2 mr-2" :value="entry.sentiment" />
-    </div>
+    </td>
   </tr>
 </template>
 
