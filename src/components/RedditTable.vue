@@ -1,5 +1,5 @@
 <template>
-  <div class="container px-4 md:p-0">
+  <div class="flex items-center container">
     <div class="flex overflow-x-auto w-full">
       <table class="justify-center">
         <thead>

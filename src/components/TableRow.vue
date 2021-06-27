@@ -1,5 +1,5 @@
 <template>
-  <tr class="grid w-[1364px] grid-cols-12 gap-4 grid-rows-1 h-20 bg-grey">
+  <tr class="grid w-[1328px] grid-cols-12 gap-4 grid-rows-1 h-20 bg-grey">
     <td class="col-span-1 flex justify-center items-center">
       <p class="text-white text-sm">{{ entry.rank }}</p>
     </td>

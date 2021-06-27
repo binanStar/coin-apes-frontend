@@ -7,8 +7,8 @@
       md:flex-row
       items-center
       xl:justify-start
+      justify-center
       flex-col flex-wrap
-      mx-auto
     "
   >
     <div class="filter-container">
@@ -138,12 +138,8 @@ export default defineComponent({
   @apply h-[40px] rounded-md bg-grey p-0 text-white;
 }
 
-.filter-sm {
-  @apply md:w-[214px] w-[329px];
-}
-
 .filter-lg {
-  @apply w-[329px];
+  @apply w-[320px];
 }
 
 .dropdown-label {

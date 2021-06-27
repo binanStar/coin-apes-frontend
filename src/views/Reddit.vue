@@ -1,18 +1,20 @@
 <template>
   <div class="flex flex-col justify-center bg-xinetic">
-    <RedditFilters class="justify-center mt-12"></RedditFilters>
-    <RedditTable class="self-center mt-12" :entries="entries"></RedditTable>
+    <RedditFilters class="self-center mt-12" />
+    <EmptyState v-if="isEmpty" class="mt-12" />
+    <RedditTable v-else class="self-center mt-12" :entries="entries" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 import RedditFilters from '../components/RedditFilters.vue';
 import RedditTable from '../components/RedditTable.vue';
 import { MetricEntry } from '../types/metricEntry';
+import EmptyState from '../components/EmptyState.vue';
 
 export default defineComponent({
-  components: { RedditFilters, RedditTable },
+  components: { RedditFilters, RedditTable, EmptyState },
   setup() {
     const entries = ref<MetricEntry[]>();
     entries.value = [
@@ -66,8 +68,13 @@ export default defineComponent({
       },
     ];
 
+    const isEmpty = computed(() => {
+      return entries.value === undefined || entries.value?.length === 0;
+    });
+
     return {
       entries,
+      isEmpty,
     };
   },
 });

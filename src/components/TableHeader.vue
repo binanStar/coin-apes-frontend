@@ -1,5 +1,5 @@
 <template>
-  <tr class="grid w-[1364px] grid-cols-12 gap-4 grid-rows-1 h-10 bg-grey rounded-t-md">
+  <tr class="grid w-[1328px] grid-cols-12 gap-4 grid-rows-1 h-10 bg-grey rounded-t-md">
     <th class="flex col-span-1 items-center">
       <p class="header-text ml-2"># Rank</p>
     </th>

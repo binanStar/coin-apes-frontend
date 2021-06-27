@@ -12,6 +12,9 @@ module.exports = {
       lg: '1024px',
       xl: '1364px',
     },
+    container: {
+      padding: '1rem',
+    },
     fontFamily: {
       poppins: ['Poppins', 'sans-serif'],
     },
