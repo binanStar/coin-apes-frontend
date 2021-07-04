@@ -8,8 +8,11 @@
   "dependencies": {
     "@j-t-mcc/vue3-chartjs": "^1.1.2",
     "@vueform/multiselect": "^1.5.0",
+    "axios": "^0.21.1",
     "chart.js": "^3.3.2",
     "node-vibrant": "^3.1.6",
+    "pinia": "^2.0.0-beta.3",
+    "qs": "^6.10.1",
     "vue": "^3.0.5",
     "vue-router": "^4.0.8",
     "vuex": "^4.0.1"

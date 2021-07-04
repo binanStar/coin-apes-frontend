@@ -15,7 +15,7 @@
       <p class="dropdown-label">Subreddit</p>
       <Multiselect
         class="filter filter-lg"
-        v-model="selectedSubreddit"
+        v-model="selectedSubreddits"
         :options="subreddits"
         mode="multiple"
         placeholder="Select a Subreddit"
@@ -72,14 +72,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, watch } from 'vue';
 import Multiselect from '@vueform/multiselect';
 import { DropdownItem } from '../types/dropdownItem';
 import DropdownOption from './DropdownOption.vue';
-import { Subreddit, subredditToDropdownItem } from '../types/enums/subreddit';
+import {
+  getEnumKeyByEnumValue,
+  Subreddit,
+  subredditToDropdownItem,
+} from '../types/enums/subreddit';
 import { RedditInterval, redditIntervalToDropdownItem } from '../types/enums/redditInterval';
 import { MetricModel, metricModelToDropdownItem } from '../types/enums/metricModel';
-import { ResultsViewType, resultsViewTypeToDropdownItem } from '../types/enums/resultsViewType';
+import { useStore } from '../store';
 
 export default defineComponent({
   components: {
@@ -87,14 +91,14 @@ export default defineComponent({
     DropdownOption,
   },
   setup() {
-    const selectedSubreddit = ref<Array<DropdownItem>>();
-    selectedSubreddit.value = [];
+    const selectedSubreddits = ref<Array<string>>();
+    selectedSubreddits.value = new Array<string>();
 
     const subreddits = ref<Array<DropdownItem>>();
     subreddits.value = Object.values(Subreddit).map((s) => subredditToDropdownItem(s));
 
-    const selectedInterval = ref<DropdownItem>();
-    selectedInterval.value = { label: '', value: '', image: '' };
+    const selectedInterval = ref<string>();
+    selectedInterval.value = '';
 
     const intervals = ref<Array<DropdownItem>>();
     intervals.value = Object.values(RedditInterval).map((s) => redditIntervalToDropdownItem(s));
@@ -102,8 +106,8 @@ export default defineComponent({
     // 40px * items + 5px (top margin)
     const intervalsDropdownHeight = 40 * intervals.value.length + 5;
 
-    const selectedCategory = ref<DropdownItem>();
-    selectedCategory.value = { label: '', value: '', image: '' };
+    const selectedCategory = ref<string>();
+    selectedCategory.value = '';
 
     const categories = ref<Array<DropdownItem>>();
     categories.value = Object.values(MetricModel).map((s) => metricModelToDropdownItem(s));
@@ -115,8 +119,15 @@ export default defineComponent({
       searchText.value = '';
     };
 
+    const store = useStore();
+
+    watch(selectedSubreddits, () => {
+      console.log(selectedSubreddits.value);
+      store.setSubreddits(selectedSubreddits.value?.map((e) => <Subreddit>e) ?? []);
+    });
+
     return {
-      selectedSubreddit,
+      selectedSubreddits,
       subreddits,
       selectedInterval,
       intervals,

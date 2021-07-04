@@ -1,9 +1,9 @@
 import { DropdownItem } from '../dropdownItem';
 
 export enum Subreddit {
-  CryptoCurrency = '/r/CryptoCurrency',
-  CryptoMarkets = '/r/CryptoMarkets',
-  CryptoMoonShots = '/r/CryptoMoonShots',
+  CryptoCurrency = 'CryptoCurrency',
+  CryptoMarkets = 'CryptoMarkets',
+  CryptoMoonShots = 'CryptoMoonShots',
 }
 
 export const SubredditIcon = new Map<Subreddit, string>([
@@ -23,8 +23,13 @@ export const SubredditIcon = new Map<Subreddit, string>([
 
 export function subredditToDropdownItem(subreddit: Subreddit): DropdownItem {
   return {
-    label: subreddit,
+    label: `/r/${subreddit}`,
     value: subreddit,
     image: SubredditIcon.get(subreddit) ?? '',
   };
+}
+
+export function getEnumKeyByEnumValue(myEnum: any, enumValue: number | string): string {
+  let keys = Object.keys(myEnum).filter((x) => myEnum[x] == enumValue);
+  return keys.length > 0 ? keys[0] : '';
 }

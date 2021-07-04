@@ -1,3 +1,5 @@
+import { FrequencyKeyValuePair } from './frequencyKeyValuePair';
+
 export interface MetricEntry {
   id: string;
   rank: number;
@@ -6,6 +8,6 @@ export interface MetricEntry {
   symbol: string;
   value: number;
   valueAsPercentage: number;
-  dates: Array<Date>;
+  frequency: Array<FrequencyKeyValuePair>;
   sentiment: number;
 }
