@@ -7,5 +7,5 @@ export interface RedditMetric {
   model: MetricModel;
   subreddits: Array<Subreddit>;
   interval: RedditInterval;
-  entries: Map<string, MetricEntry>;
+  entries: { [key: string]: MetricEntry };
 }

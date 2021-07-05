@@ -2,7 +2,7 @@
   <div class="flex flex-col justify-center bg-xinetic">
     <RedditFilters class="self-center mt-12" />
     <EmptyState v-if="isEmpty" class="mt-12" />
-    <RedditTable v-else class="self-center mt-12" :entries="entries" />
+    <RedditTable v-else class="self-center mt-12" :entries="store.entries" />
   </div>
 </template>
 
@@ -17,14 +17,14 @@ import { useStore } from '../store';
 export default defineComponent({
   components: { RedditFilters, RedditTable, EmptyState },
   setup() {
-    const entries = ref<MetricEntry[]>();
+    const store = useStore();
 
     const isEmpty = computed(() => {
-      return entries.value === undefined || entries.value?.length === 0;
+      return store.entries === undefined || store.entries.length === 0;
     });
 
     return {
-      entries,
+      store,
       isEmpty,
     };
   },

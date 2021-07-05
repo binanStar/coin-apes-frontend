@@ -12,7 +12,7 @@
       <TableMentionsBar
         class="ml-2 mr-2"
         :value="entry.valueAsPercentage"
-        :color="dominantColor"
+        :color="entry.color"
       ></TableMentionsBar>
     </td>
     <td class="flex col-span-1 justify-end items-center">
@@ -36,11 +36,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from '@vue/runtime-core';
-import { onMounted, ref } from 'vue';
+import { defineComponent, PropType, watch } from '@vue/runtime-core';
 import { MetricEntry } from '../types/metricEntry';
 import Vue3ChartJs from '@j-t-mcc/vue3-chartjs';
-import Vibrant from 'node-vibrant';
 import TableMentionsBar from './TableMentionsBar.vue';
 import TableSentimentBar from './TableSentimentBar.vue';
 
@@ -57,20 +55,16 @@ export default defineComponent({
     },
   },
   setup(props) {
-    // dominant color
-    const dominantColor = ref<string>();
-    const chartRef = ref<null | { update: () => null }>(null);
-
     const lineChart = {
       id: 'line',
       type: 'line',
       data: {
-        labels: ['1', '2', '3', '4', '5', '1', '2', '3', '4', '5'],
+        labels: props.entry.frequency,
         datasets: [
           {
             label: 'dataset',
-            data: [0, 5, 2, 3, 10, 3, 2, 1, 8, 10],
-            borderColor: '',
+            data: props.entry.frequency,
+            borderColor: props.entry.color,
             borderWidth: 2,
             tension: 0,
           },
@@ -120,21 +114,8 @@ export default defineComponent({
       },
     };
 
-    onMounted(async () => {
-      try {
-        const palette = await Vibrant.from(props.entry.image).getPalette();
-        dominantColor.value = palette.Vibrant?.hex;
-        lineChart.data.datasets[0].borderColor = palette.Vibrant?.hex ?? '';
-        chartRef.value?.update();
-      } catch (error) {
-        console.log('Failed to load dominant color');
-      }
-    });
-
     return {
       lineChart,
-      dominantColor,
-      chartRef,
     };
   },
 });

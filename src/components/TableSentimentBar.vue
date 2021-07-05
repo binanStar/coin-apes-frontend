@@ -19,8 +19,6 @@ export default defineComponent({
 
     let bgClass = '';
 
-    console.log(props.value);
-
     if (props.value >= 0.75) {
       bgClass = 'bg-green';
     } else if (0.35 < props.value && props.value < 0.75) {

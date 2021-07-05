@@ -10,4 +10,5 @@ export interface MetricEntry {
   valueAsPercentage: number;
   frequency: Array<FrequencyKeyValuePair>;
   sentiment: number;
+  color: string;
 }

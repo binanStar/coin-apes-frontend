@@ -122,8 +122,15 @@ export default defineComponent({
     const store = useStore();
 
     watch(selectedSubreddits, () => {
-      console.log(selectedSubreddits.value);
       store.setSubreddits(selectedSubreddits.value?.map((e) => <Subreddit>e) ?? []);
+    });
+
+    watch(selectedInterval, () => {
+      store.setInterval(<RedditInterval>selectedInterval.value ?? undefined);
+    });
+
+    watch(selectedCategory, () => {
+      store.setModel(<MetricModel>selectedCategory.value ?? undefined);
     });
 
     return {

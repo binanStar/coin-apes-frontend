@@ -5,12 +5,13 @@ import { RedditInterval } from '../types/enums/redditInterval';
 import { Subreddit } from '../types/enums/subreddit';
 import { RedditMetric } from '../types/redditMetric';
 import qs from 'qs';
+import { MetricEntry } from '../types/metricEntry';
 
 export type RootState = {
   metric: RedditMetric;
   subreddits: Array<Subreddit>;
-  interval: RedditInterval;
-  model: MetricModel;
+  interval: RedditInterval | undefined;
+  model: MetricModel | undefined;
 };
 
 export const useStore = defineStore({
@@ -21,12 +22,17 @@ export const useStore = defineStore({
         model: MetricModel.Coin,
         interval: RedditInterval.Day,
         subreddits: [],
-        entries: new Map(),
+        entries: {},
       },
       subreddits: [],
-      interval: RedditInterval.Day,
-      model: MetricModel.Coin,
+      interval: undefined,
+      model: undefined,
     } as RootState),
+  getters: {
+    entries(): MetricEntry[] {
+      return Object.values(this.metric.entries);
+    },
+  },
   actions: {
     setSubreddits(subreddits: Array<Subreddit>) {
       this.subreddits = subreddits;
@@ -41,9 +47,9 @@ export const useStore = defineStore({
       this.getRedditMetric();
     },
     async getRedditMetric() {
-      if (this.subreddits.length > 0) {
+      if (this.subreddits.length > 0 && this.model !== undefined && this.interval != undefined) {
         try {
-          const result = await axiosInstance.get('/api/redditMetric', {
+          const result = await axiosInstance.get<RedditMetric>('/api/redditMetric', {
             params: {
               model: this.model,
               subreddits: this.subreddits,
@@ -54,7 +60,6 @@ export const useStore = defineStore({
             },
           });
           this.metric = result.data;
-          console.log(this.metric);
         } catch (err) {
           console.error(err);
         }
