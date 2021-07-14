@@ -7,6 +7,10 @@
   @apply antialiased;
 }
 
+.loading-spinner {
+  @apply animate-spin rounded-full w-16 h-16 border-8 border-grey border-t-violet;
+}
+
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent; /* make scrollbar transparent */

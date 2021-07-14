@@ -41,6 +41,7 @@ import { MetricEntry } from '../types/metricEntry';
 import Vue3ChartJs from '@j-t-mcc/vue3-chartjs';
 import TableMentionsBar from './TableMentionsBar.vue';
 import TableSentimentBar from './TableSentimentBar.vue';
+import { onMounted, ref } from 'vue';
 
 export default defineComponent({
   components: {
@@ -55,15 +56,18 @@ export default defineComponent({
     },
   },
   setup(props) {
+    var mappedValue = props.entry.frequency.map((kv) => kv.value.toString());
+
+    const chartRef = ref<null | { update: () => null }>(null);
     const lineChart = {
       id: 'line',
       type: 'line',
       data: {
-        labels: props.entry.frequency,
+        labels: mappedValue,
         datasets: [
           {
             label: 'dataset',
-            data: props.entry.frequency,
+            data: mappedValue,
             borderColor: props.entry.color,
             borderWidth: 2,
             tension: 0,
@@ -71,6 +75,7 @@ export default defineComponent({
         ],
       },
       options: {
+        animations: false,
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
@@ -114,8 +119,20 @@ export default defineComponent({
       },
     };
 
+    watch(
+      () => props.entry,
+      () => {
+        const updatedValues = props.entry.frequency.map((kv) => kv.value.toString());
+        lineChart.data.labels = updatedValues;
+        lineChart.data.datasets[0].data = updatedValues;
+        lineChart.data.datasets[0].borderColor = props.entry.color;
+        chartRef.value?.update();
+      }
+    );
+
     return {
       lineChart,
+      chartRef,
     };
   },
 });

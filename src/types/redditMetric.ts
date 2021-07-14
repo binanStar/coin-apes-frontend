@@ -8,4 +8,5 @@ export interface RedditMetric {
   subreddits: Array<Subreddit>;
   interval: RedditInterval;
   entries: { [key: string]: MetricEntry };
+  page: number;
 }

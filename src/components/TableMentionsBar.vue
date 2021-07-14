@@ -1,9 +1,10 @@
 <template>
-  <div class="h-6 rounded-r-full" :style="{ width: width + 'px', backgroundColor: color }"></div>
+  <div class="h-6 rounded-r-full" :style="{ width: width + 'px', backgroundColor: bgColor }"></div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/runtime-core';
+import { defineComponent, watch } from '@vue/runtime-core';
+import { ref } from 'vue';
 
 export default defineComponent({
   props: {
@@ -18,10 +19,37 @@ export default defineComponent({
   setup(props) {
     // col size * 3 + 16 (one space)
     const maxWidth = 99 * 3 + 16;
-    const width = Math.floor((maxWidth * props.value) / 100);
+    const width = ref();
+    const bgColor = ref();
+
+    const updateWidth = () => {
+      width.value = Math.floor((maxWidth * props.value) / 100);
+    };
+
+    const updateColor = () => {
+      bgColor.value = props.color;
+    };
+
+    updateWidth();
+    updateColor();
+
+    watch(
+      () => props.value,
+      () => {
+        updateWidth();
+      }
+    );
+
+    watch(
+      () => props.color,
+      () => {
+        updateColor();
+      }
+    );
 
     return {
       width,
+      bgColor,
     };
   },
 });

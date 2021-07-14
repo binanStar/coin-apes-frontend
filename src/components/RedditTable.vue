@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center container">
+  <div class="flex flex-col">
     <div class="flex overflow-x-auto w-full">
       <table class="justify-center">
         <thead>
@@ -15,6 +15,7 @@
         </tbody>
       </table>
     </div>
+    <div v-if="isLoading" class="loading-spinner mt-4 justify-center self-center"></div>
   </div>
 </template>
 
@@ -30,6 +31,10 @@ export default defineComponent({
     entries: {
       type: Object as PropType<MetricEntry[]>,
       default: [],
+    },
+    isLoading: {
+      type: Boolean,
+      default: false,
     },
   },
   components: { TableHeader, TableRow },
