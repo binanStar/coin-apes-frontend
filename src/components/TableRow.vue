@@ -6,7 +6,7 @@
     <td class="col-span-2 flex flex-row items-center">
       <img class="h-8 w-8 rounded-full ml-2" :src="entry.image" />
       <p class="text-white text-sm ml-4">{{ entry.name }}</p>
-      <p class="text-white text-sm font-medium ml-4">{{ entry.symbol }}</p>
+      <p class="text-white text-sm font-medium ml-4 uppercase">{{ entry.symbol }}</p>
     </td>
     <td class="flex col-span-3 items-center">
       <TableMentionsBar

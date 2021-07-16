@@ -13,9 +13,11 @@ export type RootState = {
   subreddits: Array<Subreddit>;
   interval: RedditInterval | undefined;
   model: MetricModel | undefined;
+  query: string;
   page: number;
   isLoading: boolean;
   cancellationToken: CancelTokenSource;
+  canFetchMore: boolean;
 };
 
 export const useStore = defineStore({
@@ -26,9 +28,11 @@ export const useStore = defineStore({
       subreddits: [],
       interval: undefined,
       model: undefined,
+      query: '',
       page: 1,
       isLoading: false,
       cancellationToken: axios.CancelToken.source(),
+      canFetchMore: true,
     } as RootState),
   getters: {
     currentPage(): number {
@@ -48,6 +52,10 @@ export const useStore = defineStore({
       this.model = model;
       this.getRedditMetric(1);
     },
+    setQuery(query: string) {
+      this.query = query;
+      this.getRedditMetric(1);
+    },
     async getRedditMetric(page: Number) {
       if (this.subreddits.length > 0 && this.model !== undefined && this.interval != undefined) {
         try {
@@ -55,12 +63,18 @@ export const useStore = defineStore({
             this.cancellationToken.cancel();
             this.cancellationToken = axios.CancelToken.source();
           }
+
+          if (page === 1) {
+            this.canFetchMore = true;
+          }
+
           this.isLoading = true;
           const result = await axiosInstance.get<RedditMetric>('/api/redditMetric', {
             params: {
               model: this.model,
               subreddits: this.subreddits,
               interval: this.interval,
+              query: this.query,
               page: page,
             },
             paramsSerializer: (params) => {
@@ -69,15 +83,18 @@ export const useStore = defineStore({
             cancelToken: this.cancellationToken.token,
           });
           const metric = result.data;
-          const entries = Object.values(metric.entries).slice(0, 100);
+          const entries = Object.values(metric.entries);
           console.log(this.page);
-          // TODO: handle loading on first page
           if (metric.page === 1) {
             this.entries = entries;
           } else {
             this.entries.push(...entries);
           }
           this.page = metric.page + 1;
+
+          if (entries.length < 50) {
+            this.canFetchMore = false;
+          }
         } catch (err) {
           console.error(err);
         } finally {

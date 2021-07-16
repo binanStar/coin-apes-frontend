@@ -34,7 +34,12 @@ export default defineComponent({
 
     const handleScroll = (_) => {
       let element = scrollComponent.value;
-      if (element !== null && element.getBoundingClientRect().bottom < window.innerHeight + 32) {
+      if (
+        element !== null &&
+        element.getBoundingClientRect().bottom < window.innerHeight &&
+        store.canFetchMore &&
+        !store.isLoading
+      ) {
         store.getRedditMetric(store.page);
       }
     };

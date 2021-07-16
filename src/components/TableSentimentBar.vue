@@ -4,6 +4,7 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/runtime-core';
+import { ref, watch } from 'vue';
 
 export default defineComponent({
   props: {
@@ -13,19 +14,35 @@ export default defineComponent({
     },
   },
   setup(props) {
-    // col size * 2
-    const maxWidth = 99 * 2;
-    const width = Math.floor(maxWidth * props.value);
+    const bgClass = ref();
+    const width = ref();
 
-    let bgClass = '';
+    const update = () => {
+      // col size * 2
+      const maxWidth = 99 * 2;
+      width.value = Math.floor(maxWidth * props.value);
 
-    if (props.value >= 0.75) {
-      bgClass = 'bg-green';
-    } else if (0.35 < props.value && props.value < 0.75) {
-      bgClass = 'bg-yellow';
-    } else {
-      bgClass = 'bg-red';
-    }
+      if (props.value >= 0.8) {
+        bgClass.value = 'bg-green';
+      } else if (0.6 <= props.value && props.value < 0.8) {
+        bgClass.value = 'bg-greenlow';
+      } else if (0.4 <= props.value && props.value < 0.6) {
+        bgClass.value = 'bg-yellow';
+      } else if (0.2 <= props.value && props.value < 0.4) {
+        bgClass.value = 'bg-orange';
+      } else {
+        bgClass.value = 'bg-red';
+      }
+    };
+
+    update();
+
+    watch(
+      () => props.value,
+      () => {
+        update();
+      }
+    );
 
     return {
       width,

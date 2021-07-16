@@ -84,6 +84,7 @@ import {
 import { RedditInterval, redditIntervalToDropdownItem } from '../types/enums/redditInterval';
 import { MetricModel, metricModelToDropdownItem } from '../types/enums/metricModel';
 import { useStore } from '../store';
+import useDebouncedRef from '../composable/useDebouncedRef ';
 
 export default defineComponent({
   components: {
@@ -112,7 +113,7 @@ export default defineComponent({
     const categories = ref<Array<DropdownItem>>();
     categories.value = Object.values(MetricModel).map((s) => metricModelToDropdownItem(s));
 
-    const searchText = ref<string>();
+    const searchText = useDebouncedRef('', 300);
     searchText.value = '';
 
     const clearClicked = () => {
@@ -131,6 +132,10 @@ export default defineComponent({
 
     watch(selectedCategory, () => {
       store.setModel(<MetricModel>selectedCategory.value ?? undefined);
+    });
+
+    watch(searchText, (newValue) => {
+      store.setQuery(newValue);
     });
 
     return {
