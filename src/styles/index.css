@@ -8,7 +8,7 @@
 }
 
 .loading-spinner {
-  @apply animate-spin rounded-full w-16 h-16 border-8 border-grey border-t-violet;
+  @apply animate-spin rounded-full w-12 h-12 border-[6px] border-grey border-t-violet;
 }
 
 ::-webkit-scrollbar {

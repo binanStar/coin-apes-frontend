@@ -10,13 +10,30 @@
       </div>
     </div>
     <router-view></router-view>
+    <vue-progress-bar class="self-center"></vue-progress-bar>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, getCurrentInstance, watch } from 'vue';
+import { useStore } from './store';
 
 export default defineComponent({
   name: 'App',
+  setup() {
+    var store = useStore();
+    const internalInstance = getCurrentInstance();
+
+    watch(
+      () => store.isLoading,
+      (newValue) => {
+        if (newValue) {
+          internalInstance?.appContext.config.globalProperties.$Progress.start();
+        } else {
+          internalInstance?.appContext.config.globalProperties.$Progress.finish();
+        }
+      }
+    );
+  },
 });
 </script>

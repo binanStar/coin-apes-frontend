@@ -1,15 +1,11 @@
 <template>
   <div class="flex flex-col justify-center">
     <RedditFilters class="self-center mt-12" />
-    <div
-      v-if="store.isLoading && store.currentPage === 1"
-      class="loading-spinner self-center mt-8"
-    ></div>
     <EmptyState v-if="isEmpty" class="mt-12" />
     <div ref="scrollComponent" v-else class="flex flex-col items-center self-center container">
       <RedditTable
         class="self-center mt-12 mb-16"
-        :isLoading="store.isLoading"
+        :isLoading="store.isLoading && store.fetchingPage !== 1"
         :entries="store.entries"
       />
     </div>
@@ -17,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, onUnmounted, ref } from 'vue';
+import { computed, defineComponent, getCurrentInstance, onMounted, onUnmounted, ref } from 'vue';
 import RedditFilters from '../components/RedditFilters.vue';
 import RedditTable from '../components/RedditTable.vue';
 import EmptyState from '../components/EmptyState.vue';

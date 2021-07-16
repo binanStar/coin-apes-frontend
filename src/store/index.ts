@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import axiosInstance from '../composable/useAxios';
+import axiosInstance from '../composable/axiosInstance';
 import { MetricModel } from '../types/enums/metricModel';
 import { RedditInterval } from '../types/enums/redditInterval';
 import { Subreddit } from '../types/enums/subreddit';
@@ -15,6 +15,7 @@ export type RootState = {
   model: MetricModel | undefined;
   query: string;
   page: number;
+  fetchingPage: number;
   isLoading: boolean;
   cancellationToken: CancelTokenSource;
   canFetchMore: boolean;
@@ -31,14 +32,10 @@ export const useStore = defineStore({
       query: '',
       page: 1,
       isLoading: false,
+      fetchingPage: 2,
       cancellationToken: axios.CancelToken.source(),
       canFetchMore: true,
     } as RootState),
-  getters: {
-    currentPage(): number {
-      return this.page;
-    },
-  },
   actions: {
     setSubreddits(subreddits: Array<Subreddit>) {
       this.subreddits = subreddits;
@@ -56,7 +53,7 @@ export const useStore = defineStore({
       this.query = query;
       this.getRedditMetric(1);
     },
-    async getRedditMetric(page: Number) {
+    async getRedditMetric(page: number) {
       if (this.subreddits.length > 0 && this.model !== undefined && this.interval != undefined) {
         try {
           if (this.cancellationToken !== undefined) {
@@ -64,11 +61,13 @@ export const useStore = defineStore({
             this.cancellationToken = axios.CancelToken.source();
           }
 
+          this.fetchingPage = page;
+
           if (page === 1) {
             this.canFetchMore = true;
+            this.page === 1;
           }
 
-          this.isLoading = true;
           const result = await axiosInstance.get<RedditMetric>('/api/redditMetric', {
             params: {
               model: this.model,
@@ -84,7 +83,7 @@ export const useStore = defineStore({
           });
           const metric = result.data;
           const entries = Object.values(metric.entries);
-          console.log(this.page);
+
           if (metric.page === 1) {
             this.entries = entries;
           } else {
@@ -95,10 +94,9 @@ export const useStore = defineStore({
           if (entries.length < 50) {
             this.canFetchMore = false;
           }
+          console.log(this._vm);
         } catch (err) {
           console.error(err);
-        } finally {
-          this.isLoading = false;
         }
       }
     },
