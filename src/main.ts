@@ -5,6 +5,8 @@ import router from './router';
 import './styles/index.css';
 import './styles/multiselect.css';
 import VueProgressBar from '@aacassandra/vue3-progressbar';
+import VTooltipPlugin from 'v-tooltip';
+import 'v-tooltip/dist/v-tooltip.css';
 
 const options = {
   color: '#7067CF',
@@ -20,8 +22,24 @@ const options = {
   inverse: false,
 };
 
-export default createApp(App)
-  .use(createPinia())
-  .use(router)
-  .use(VueProgressBar, options)
-  .mount('#app');
+const app = createApp(App);
+app.use(createPinia());
+app.use(router);
+app.use(VueProgressBar, options);
+app.use(VTooltipPlugin, {
+  themes: {
+    'info-tooltip': {
+      $extend: 'tooltip',
+      $resetCss: true,
+      triggers: ['click', 'hover'],
+      delay: {
+        show: 0,
+        hide: 200,
+      },
+      autoHide: true,
+      eagerMount: false,
+      placement: 'bottom',
+    },
+  },
+});
+app.mount('#app');

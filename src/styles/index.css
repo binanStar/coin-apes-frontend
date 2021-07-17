@@ -11,6 +11,17 @@
   @apply animate-spin rounded-full w-12 h-12 border-[6px] border-grey border-t-violet;
 }
 
+.v-popper--theme-info-tooltip .v-popper__inner {
+  background: #262633;
+  color: #ffffff;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.v-popper--theme-info-tooltip .v-popper__arrow {
+  border-color: #262633;
+}
+
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent; /* make scrollbar transparent */

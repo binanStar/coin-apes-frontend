@@ -17,9 +17,44 @@
     </th>
     <th class="flex col-span-2 items-center">
       <p class="header-text ml-2">Frequency</p>
+      <VTooltip theme="info-tooltip">
+        <template #default>
+          <img src="../assets/info.svg" class="info" />
+        </template>
+        <template #popper>
+          <div class="p-4">
+            <p class="text-sm">Ploted mentions base on Interval</p>
+            <p class="text-sm mt-2">
+              E.g. When day is selected:
+              <br />
+              X axis - hour
+              <br />
+              Y axis - mentions
+            </p>
+          </div>
+        </template>
+      </VTooltip>
     </th>
     <th class="flex col-span-2 items-center">
       <p class="header-text ml-2">Sentiment</p>
+      <VTooltip theme="info-tooltip">
+        <template #default>
+          <img src="../assets/info.svg" class="info" />
+        </template>
+        <template #popper>
+          <div class="p-4">
+            <p class="text-sm">
+              Average sentiment (0 to 1) from post
+              <br />
+              title and/or post content.
+            </p>
+            <p class="mt-2 text-sm">
+              <span class="text-violet font-bold">NOTE</span>
+              : This feature is still in BETA
+            </p>
+          </div>
+        </template>
+      </VTooltip>
     </th>
   </tr>
 </template>
@@ -33,5 +68,9 @@ export default defineComponent({});
 <style lang="postcss" scoped>
 .header-text {
   @apply text-sm font-medium text-white;
+}
+
+.info {
+  @apply h-[12px] w-[12px] ml-2;
 }
 </style>

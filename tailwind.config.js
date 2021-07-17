@@ -26,6 +26,7 @@ module.exports = {
       white: colors.white,
       xinetic: '#060510',
       grey: '#2C2C3A',
+      darkergrey: '#262633',
       violet: '#7067CF',
       green: '#2C6E49',
       greenlow: '#80A84A',

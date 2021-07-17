@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Reddit from '../views/Reddit.vue';
+import NotFound from '../views/NotFound.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -7,6 +8,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Reddit',
     component: Reddit,
   },
+  { path: '/:pathMatch(.*)*', component: NotFound },
 ];
 
 const router = createRouter({
