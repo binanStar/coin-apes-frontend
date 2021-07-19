@@ -22,6 +22,14 @@
   border-color: #262633;
 }
 
+.text-title {
+  @apply text-3xl lg:text-4xl text-white font-bold;
+}
+
+.text-big {
+  @apply text-sm lg:text-xl text-white font-normal;
+}
+
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent; /* make scrollbar transparent */

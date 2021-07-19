@@ -7,6 +7,7 @@ import './styles/multiselect.css';
 import VueProgressBar from '@aacassandra/vue3-progressbar';
 import VTooltipPlugin from 'v-tooltip';
 import 'v-tooltip/dist/v-tooltip.css';
+import { VueClipboard } from '@soerenmartius/vue3-clipboard';
 
 const options = {
   color: '#7067CF',
@@ -26,6 +27,7 @@ const app = createApp(App);
 app.use(createPinia());
 app.use(router);
 app.use(VueProgressBar, options);
+app.use(VueClipboard);
 app.use(VTooltipPlugin, {
   themes: {
     'info-tooltip': {
@@ -38,6 +40,13 @@ app.use(VTooltipPlugin, {
       },
       autoHide: true,
       eagerMount: false,
+      placement: 'bottom',
+    },
+    'copy-tooltip': {
+      $extend: 'tooltip',
+      $resetCss: false,
+      triggers: ['click'],
+      autoHide: true,
       placement: 'bottom',
     },
   },
