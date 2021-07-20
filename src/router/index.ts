@@ -3,6 +3,8 @@ import Reddit from '../views/Reddit.vue';
 import NotFound from '../views/NotFound.vue';
 import About from '../views/About.vue';
 import Support from '../views/Support.vue';
+import Privacy from '../views/Privacy.vue';
+import Terms from '../views/Terms.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -19,6 +21,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/support',
     name: 'Support',
     component: Support,
+  },
+  {
+    path: '/privacy',
+    name: 'Privacy',
+    component: Privacy,
+  },
+  {
+    path: '/terms',
+    name: 'terms',
+    component: Terms,
   },
   { path: '/:pathMatch(.*)*', component: NotFound },
 ];

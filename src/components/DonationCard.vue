@@ -5,7 +5,7 @@
       <p class="text-white text-2xl font-bold">{{ title }}</p>
     </div>
     <img class="w-36 h-36 mt-6" :src="qr" />
-    <p class="text-white text-xl break-all text-center mt-6 ml-6 mr-6">
+    <p class="text-white text-sm break-all text-center mt-6 ml-6 mr-6">
       {{ address }}
     </p>
     <VTooltip theme="copy-tooltip">

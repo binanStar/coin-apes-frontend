@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center">
+  <div class="flex flex-col justify-start items-center">
     <RedditFilters class="self-center mt-12" />
     <EmptyState v-if="isEmpty" class="mt-12" />
     <div ref="scrollComponent" v-else class="flex flex-col items-center self-center container">

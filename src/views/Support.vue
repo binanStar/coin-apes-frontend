@@ -1,6 +1,6 @@
 <template>
   <div class="container flex flex-col self-center items-center mx-6">
-    <p class="text-title text-center mt-12">Support Coin Apes</p>
+    <h1 class="text-h1 text-center mt-12">Support Coin Apes</h1>
     <p class="text-big mt-8 lg:mt-16 text-center">
       Currently, Coin Apes is maintained by a single person and the data collected is growing with
       each day. We would like to collect more data, from
@@ -47,7 +47,7 @@
         />
       </form>
     </div>
-    <div class="flex flex-col md:flex-row md:space-x-32 lg:space-x-60 mb-8 mt-6 md:mt-16">
+    <div class="flex flex-col lg:flex-row lg:space-x-16 xl:space-x-32 mb-8 mt-6 lg:mt-16">
       <DonationCard
         :title="'Bitcoin'"
         :icon="'src/assets/btc.png'"
@@ -55,11 +55,19 @@
         :qr="'src/assets/btcqr.jpeg'"
       ></DonationCard>
       <DonationCard
-        class="mt-6 md:mt-0"
+        class="mt-6 lg:mt-0"
         :title="'Ethereum'"
         :icon="'src/assets/eth.png'"
         :address="'0x25c54f89da2cd617151e515aeb65fff83b8b00b2'"
         :qr="'src/assets/ethqr.png'"
+      ></DonationCard>
+
+      <DonationCard
+        class="mt-6 lg:mt-0"
+        :title="'elrond'"
+        :icon="'src/assets/egld.png'"
+        :address="'erd1ttf0fx4t4hj6f8vkvwvhsfglr5s0qutyvl0qw3fz50mn7mnzkszqcmufrs'"
+        :qr="'src/assets/egldqr.png'"
       ></DonationCard>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="container flex flex-col items-center self-center">
-    <p class="text-title mt-12">About Coin Apes</p>
+    <h1 class="text-h1 mt-12">About Coin Apes</h1>
     <div class="container flex flex-col items-center md:flex-row mt-12 md:mt-24 ml-6 mr-6">
       <div class="flex flex-col items-center">
         <p class="text-big text-center w-80 lg:w-[540px]">
