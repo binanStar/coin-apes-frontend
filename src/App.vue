@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, getCurrentInstance, watch } from 'vue';
+import { defineComponent, getCurrentInstance, inject, watch } from 'vue';
 import { useStore } from './store';
 import Footer from 'components/Footer.vue';
 import Navbar from 'components/Navbar.vue';
@@ -21,15 +21,16 @@ export default defineComponent({
   },
   setup() {
     var store = useStore();
-    const internalInstance = getCurrentInstance();
+
+    const prograssBar = inject<any>('progressBar');
 
     watch(
       () => store.isLoading,
       (newValue) => {
         if (newValue) {
-          internalInstance?.appContext.config.globalProperties.$Progress.start();
+          prograssBar.start();
         } else {
-          internalInstance?.appContext.config.globalProperties.$Progress.finish();
+          prograssBar.finish();
         }
       }
     );

@@ -6,7 +6,7 @@ import { Subreddit } from '../types/enums/subreddit';
 import { RedditMetric } from '../types/redditMetric';
 import qs from 'qs';
 import { MetricEntry } from '../types/metricEntry';
-import axios, { CancelTokenSource } from 'axios';
+import axios, { AxiosError, CancelTokenSource } from 'axios';
 
 export type RootState = {
   entries: Array<MetricEntry>;
@@ -25,7 +25,188 @@ export const useStore = defineStore({
   id: 'coinApesStore',
   state: () =>
     ({
-      entries: new Array<MetricEntry>(),
+      entries: [
+        {
+          id: '1',
+          name: 'wow',
+          symbol: 'wow',
+          image: '',
+          rank: 1,
+          value: 123,
+          frequency: [],
+          sentiment: 0.3,
+          valueAsPercentage: 0.3,
+          color: '',
+        },
+        {
+          id: '1',
+          name: 'wow',
+          symbol: 'wow',
+          image: '',
+          rank: 1,
+          value: 123,
+          frequency: [],
+          sentiment: 0.3,
+          valueAsPercentage: 0.3,
+          color: '',
+        },
+        {
+          id: '1',
+          name: 'wow',
+          symbol: 'wow',
+          image: '',
+          rank: 1,
+          value: 123,
+          frequency: [],
+          sentiment: 0.3,
+          valueAsPercentage: 0.3,
+          color: '',
+        },
+        {
+          id: '1',
+          name: 'wow',
+          symbol: 'wow',
+          image: '',
+          rank: 1,
+          value: 123,
+          frequency: [],
+          sentiment: 0.3,
+          valueAsPercentage: 0.3,
+          color: '',
+        },
+        {
+          id: '1',
+          name: 'wow',
+          symbol: 'wow',
+          image: '',
+          rank: 1,
+          value: 123,
+          frequency: [],
+          sentiment: 0.3,
+          valueAsPercentage: 0.3,
+          color: '',
+        },
+        {
+          id: '1',
+          name: 'wow',
+          symbol: 'wow',
+          image: '',
+          rank: 1,
+          value: 123,
+          frequency: [],
+          sentiment: 0.3,
+          valueAsPercentage: 0.3,
+          color: '',
+        },
+        {
+          id: '1',
+          name: 'wow',
+          symbol: 'wow',
+          image: '',
+          rank: 1,
+          value: 123,
+          frequency: [],
+          sentiment: 0.3,
+          valueAsPercentage: 0.3,
+          color: '',
+        },
+        {
+          id: '1',
+          name: 'wow',
+          symbol: 'wow',
+          image: '',
+          rank: 1,
+          value: 123,
+          frequency: [],
+          sentiment: 0.3,
+          valueAsPercentage: 0.3,
+          color: '',
+        },
+        {
+          id: '1',
+          name: 'wow',
+          symbol: 'wow',
+          image: '',
+          rank: 1,
+          value: 123,
+          frequency: [],
+          sentiment: 0.3,
+          valueAsPercentage: 0.3,
+          color: '',
+        },
+        {
+          id: '1',
+          name: 'wow',
+          symbol: 'wow',
+          image: '',
+          rank: 1,
+          value: 123,
+          frequency: [],
+          sentiment: 0.3,
+          valueAsPercentage: 0.3,
+          color: '',
+        },
+        {
+          id: '1',
+          name: 'wow',
+          symbol: 'wow',
+          image: '',
+          rank: 1,
+          value: 123,
+          frequency: [],
+          sentiment: 0.3,
+          valueAsPercentage: 0.3,
+          color: '',
+        },
+        {
+          id: '1',
+          name: 'wow',
+          symbol: 'wow',
+          image: '',
+          rank: 1,
+          value: 123,
+          frequency: [],
+          sentiment: 0.3,
+          valueAsPercentage: 0.3,
+          color: '',
+        },
+        {
+          id: '1',
+          name: 'wow',
+          symbol: 'wow',
+          image: '',
+          rank: 1,
+          value: 123,
+          frequency: [],
+          sentiment: 0.3,
+          valueAsPercentage: 0.3,
+          color: '',
+        },
+        {
+          id: '1',
+          name: 'wow',
+          symbol: 'wow',
+          image: '',
+          rank: 1,
+          value: 123,
+          frequency: [],
+          sentiment: 0.3,
+          valueAsPercentage: 0.3,
+          color: '',
+        },
+        {
+          id: '1',
+          name: 'wow',
+          symbol: 'wow',
+          image: '',
+          rank: 1,
+          value: 123,
+          frequency: [],
+          sentiment: 0.3,
+          valueAsPercentage: 0.3,
+          color: '',
+        },
+      ],
       subreddits: [],
       interval: undefined,
       model: undefined,
@@ -94,9 +275,18 @@ export const useStore = defineStore({
           if (entries.length < 50) {
             this.canFetchMore = false;
           }
-          console.log(this._vm);
         } catch (err) {
           console.error(err);
+          if (axios.isAxiosError(err)) {
+            if ((<AxiosError>err).code === '429') {
+              this.toast.warning(
+                'API calls quota exceeded, consider supporting the project to allow higher limits.',
+                {
+                  position: 'top-right',
+                }
+              );
+            }
+          }
         }
       }
     },

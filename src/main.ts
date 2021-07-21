@@ -1,5 +1,5 @@
-import { createPinia } from 'pinia';
-import { createApp } from 'vue';
+import { createPinia, PiniaPluginContext } from 'pinia';
+import { createApp, ref } from 'vue';
 import App from './App.vue';
 import router from './router';
 import './styles/index.css';
@@ -8,6 +8,8 @@ import VueProgressBar from '@aacassandra/vue3-progressbar';
 import VTooltipPlugin from 'v-tooltip';
 import 'v-tooltip/dist/v-tooltip.css';
 import { VueClipboard } from '@soerenmartius/vue3-clipboard';
+import VueToast from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
 
 const options = {
   color: '#7067CF',
@@ -24,9 +26,19 @@ const options = {
 };
 
 const app = createApp(App);
-app.use(createPinia());
+app.use(VueToast);
+app.provide('toast', app.config.globalProperties.$toast);
+
+// pinia
+const pinia = createPinia();
+pinia.use(({ store }) => {
+  store.toast = app.config.globalProperties.$toast;
+});
+app.use(pinia);
+
 app.use(router);
 app.use(VueProgressBar, options);
+app.provide('progressBar', app.config.globalProperties.$Progress);
 app.use(VueClipboard);
 app.use(VTooltipPlugin, {
   themes: {
