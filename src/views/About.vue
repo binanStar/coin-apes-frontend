@@ -13,22 +13,22 @@
           <ContactDetail
             :text="'coinapes.contact@gmail.com'"
             :link="'mailto:coinapes.contact@gmail.com'"
-            :image="'/src/assets/mail.svg'"
+            :image="assets.mail"
           ></ContactDetail>
           <ContactDetail
             :text="'Lucian Eduard Ghimpu'"
             :link="'https://github.com/GhimpuLucianEduard'"
-            :image="'/src/assets/github.svg'"
+            :image="assets.github"
           ></ContactDetail>
           <ContactDetail
             :text="'Lucian Eduard Ghimpu'"
             :link="'https://www.linkedin.com/in/lucian-eduard-ghimpu-21b33b131/'"
-            :image="'/src/assets/linkedin.svg'"
+            :image="assets.linkedin"
           ></ContactDetail>
         </div>
       </div>
       <img
-        src="/src/assets/aboutImage.svg"
+        :src="assets.aboutImage"
         class="w-[320px] h-[268px] lg:w-[462px] lg:h-[387px] mt-12 lg:mt-0 md:ml-auto lg:mr-[112px]"
       />
     </div>
@@ -38,14 +38,18 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import ContactDetail from '../components/ContactDetail.vue';
+import useAssets from '../composable/useAssets';
 
 export default defineComponent({
   components: {
     ContactDetail,
   },
   setup() {
-    var ce = import.meta.glob('/src/assets/*.svg');
-    console.log(ce);
+    var assets = useAssets();
+
+    return {
+      assets,
+    };
   },
 });
 </script>

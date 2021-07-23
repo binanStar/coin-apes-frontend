@@ -50,24 +50,24 @@
     <div class="flex flex-col lg:flex-row lg:space-x-16 xl:space-x-32 mb-8 mt-6 lg:mt-16">
       <DonationCard
         :title="'Bitcoin'"
-        :icon="'/src/assets/btc.png'"
+        :icon="assets.btc"
         :address="'12GQ5kabL17JLsdTBuJVF3LoqDzBF1M9mQ'"
-        :qr="'/src/assets/btcqr.jpeg'"
+        :qr="assets.btcqr"
       ></DonationCard>
       <DonationCard
         class="mt-6 lg:mt-0"
         :title="'Ethereum'"
-        :icon="'/src/assets/eth.png'"
+        :icon="assets.eth"
         :address="'0x25c54f89da2cd617151e515aeb65fff83b8b00b2'"
-        :qr="'/src/assets/ethqr.png'"
+        :qr="assets.ethqr"
       ></DonationCard>
 
       <DonationCard
         class="mt-6 lg:mt-0"
         :title="'elrond'"
-        :icon="'/src/assets/egld.png'"
+        :icon="assets.egld"
         :address="'erd1ttf0fx4t4hj6f8vkvwvhsfglr5s0qutyvl0qw3fz50mn7mnzkszqcmufrs'"
-        :qr="'/src/assets/egldqr.png'"
+        :qr="assets.egldqr"
       ></DonationCard>
     </div>
   </div>
@@ -76,10 +76,17 @@
 <script lang="ts">
 import { defineComponent } from '@vue/runtime-core';
 import DonationCard from '../components/DonationCard.vue';
+import useAssets from '../composable/useAssets';
 
 export default defineComponent({
   components: {
     DonationCard,
+  },
+  setup() {
+    const assets = useAssets();
+    return {
+      assets,
+    };
   },
 });
 </script>

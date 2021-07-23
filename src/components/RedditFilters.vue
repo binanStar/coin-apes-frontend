@@ -59,7 +59,7 @@
     <div
       class="flex flex-row relative items-center mt-6 w-max bg-grey rounded-md filter-lg h-[40px]"
     >
-      <img src="/src/assets/search.svg" class="w-4 h-4 ml-4" />
+      <img :src="assets.search" class="w-4 h-4 ml-4" />
       <input
         type="text"
         placeholder="Search"
@@ -85,6 +85,7 @@ import { RedditInterval, redditIntervalToDropdownItem } from '../types/enums/red
 import { MetricModel, metricModelToDropdownItem } from '../types/enums/metricModel';
 import { useStore } from '../store';
 import useDebouncedRef from '../composable/useDebouncedRef ';
+import useAssets from '../composable/useAssets';
 
 export default defineComponent({
   components: {
@@ -138,6 +139,8 @@ export default defineComponent({
       store.setQuery(newValue);
     });
 
+    const assets = useAssets();
+
     return {
       selectedSubreddits,
       subreddits,
@@ -148,6 +151,7 @@ export default defineComponent({
       categories,
       searchText,
       clearClicked,
+      assets,
     };
   },
 });

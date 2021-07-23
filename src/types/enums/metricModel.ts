@@ -1,4 +1,7 @@
+import useAssets from '../../composable/useAssets';
 import { DropdownItem } from '../dropdownItem';
+
+const assets = useAssets();
 
 export enum MetricModel {
   Coin = 'Coin',
@@ -7,9 +10,9 @@ export enum MetricModel {
 }
 
 export const MetricModelIcon = new Map<MetricModel, string>([
-  [MetricModel.Coin, '/src/assets/coins.svg'],
-  [MetricModel.Exchange, '/src/assets/exchanges.svg'],
-  [MetricModel.Item, '/src/assets/misc.svg'],
+  [MetricModel.Coin, assets.coins],
+  [MetricModel.Exchange, assets.exchanges],
+  [MetricModel.Item, assets.misc],
 ]);
 
 export const MetricModelLabel = new Map<MetricModel, string>([
