@@ -4,7 +4,7 @@ export default function useAssets() {
   const svgs =
     env === 'development'
       ? import.meta.globEager('/src/assets/*.svg')
-      : import.meta.globEager('*.svg');
+      : import.meta.globEager('/*.svg');
 
   const pngs =
     env === 'development'
