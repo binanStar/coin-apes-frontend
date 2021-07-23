@@ -13,16 +13,17 @@
           <ContactDetail
             :text="'coinapes.contact@gmail.com'"
             :link="'mailto:coinapes.contact@gmail.com'"
-            :image="'@/assets/mail.svg'"
+            :image="'/src/assets/mail.svg'"
           ></ContactDetail>
           <ContactDetail
             :text="'Lucian Eduard Ghimpu'"
             :link="'https://github.com/GhimpuLucianEduard'"
-            :image="'@/assets/github.svg'"
+            :image="'/src/assets/github.svg'"
           ></ContactDetail>
           <ContactDetail
             :text="'Lucian Eduard Ghimpu'"
             :link="'https://www.linkedin.com/in/lucian-eduard-ghimpu-21b33b131/'"
+            :image="'/src/assets/linkedin.svg'"
           ></ContactDetail>
         </div>
       </div>
@@ -37,17 +38,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import ContactDetail from '../components/ContactDetail.vue';
-import useAssets from '../composable/useAssets';
 
 export default defineComponent({
   components: {
     ContactDetail,
-  },
-  setup() {
-    const about = useAssets().about;
-    return {
-      about,
-    };
   },
 });
 </script>
