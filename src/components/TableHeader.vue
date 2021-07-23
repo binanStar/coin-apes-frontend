@@ -7,7 +7,7 @@
       <p class="header-text ml-2">Name</p>
       <VTooltip theme="info-tooltip">
         <template #default>
-          <img src="@/assets/info.svg" class="info" />
+          <img class="info" />
         </template>
         <template #popper>
           <div class="p-4">
@@ -39,7 +39,7 @@
       <p class="header-text ml-2">Frequency</p>
       <VTooltip theme="info-tooltip">
         <template #default>
-          <img src="@/assets/info.svg" class="info" />
+          <img  class="info" />
         </template>
         <template #popper>
           <div class="p-4">
@@ -59,7 +59,7 @@
       <p class="header-text ml-2">Sentiment</p>
       <VTooltip theme="info-tooltip">
         <template #default>
-          <img src="@/assets/info.svg" class="info" />
+          <img  class="info" />
         </template>
         <template #popper>
           <div class="p-4">

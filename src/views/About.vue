@@ -27,7 +27,7 @@
         </div>
       </div>
       <img
-        src="@/assets/aboutimage.svg"
+        :src="about"
         class="w-[320px] h-[268px] lg:w-[462px] lg:h-[387px] mt-12 lg:mt-0 md:ml-auto lg:mr-[112px]"
       />
     </div>
@@ -37,10 +37,17 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import ContactDetail from '../components/ContactDetail.vue';
+import useAssets from '../composable/useAssets';
 
 export default defineComponent({
   components: {
     ContactDetail,
+  },
+  setup() {
+    const about = useAssets().about;
+    return {
+      about,
+    };
   },
 });
 </script>
