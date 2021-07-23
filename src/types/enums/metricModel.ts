@@ -7,9 +7,9 @@ export enum MetricModel {
 }
 
 export const MetricModelIcon = new Map<MetricModel, string>([
-  [MetricModel.Coin, 'assets/coins.svg'],
-  [MetricModel.Exchange, 'assets/exchanges.svg'],
-  [MetricModel.Item, 'assets/misc.svg'],
+  [MetricModel.Coin, '/assets/coins.svg'],
+  [MetricModel.Exchange, '/assets/exchanges.svg'],
+  [MetricModel.Item, '/assets/misc.svg'],
 ]);
 
 export const MetricModelLabel = new Map<MetricModel, string>([

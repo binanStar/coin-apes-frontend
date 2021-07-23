@@ -13,12 +13,12 @@
           <ContactDetail
             :text="'coinapes.contact@gmail.com'"
             :link="'mailto:coinapes.contact@gmail.com'"
-            :image="'assets/mail.svg'"
+            :image="'/assets/mail.svg'"
           ></ContactDetail>
           <ContactDetail
             :text="'Lucian Eduard Ghimpu'"
             :link="'https://github.com/GhimpuLucianEduard'"
-            :image="'@/assets/github.svg'"
+            :image="'/assets/github.svg'"
           ></ContactDetail>
           <ContactDetail
             :text="'Lucian Eduard Ghimpu'"
@@ -27,7 +27,7 @@
         </div>
       </div>
       <img
-        src="@/assets/aboutimage.svg"
+        src="/assets/aboutimage.svg"
         class="w-[320px] h-[268px] lg:w-[462px] lg:h-[387px] mt-12 lg:mt-0 md:ml-auto lg:mr-[112px]"
       />
     </div>

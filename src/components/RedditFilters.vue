@@ -59,7 +59,7 @@
     <div
       class="flex flex-row relative items-center mt-6 w-max bg-grey rounded-md filter-lg h-[40px]"
     >
-      <img src="assets/search.svg" class="w-4 h-4 ml-4" />
+      <img src="/assets/search.svg" class="w-4 h-4 ml-4" />
       <input
         type="text"
         placeholder="Search"
