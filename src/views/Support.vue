@@ -24,7 +24,7 @@
       <span class="text-violet">certainty</span>
     </p>
     <div class="flex flex-row mt-8 lg:mt-12 space-x-8">
-      <img src="@/assets/paypal.svg" />
+      <img src="src/assets/paypal.svg" />
       <form action="https://www.paypal.com/donate" method="post" target="_top">
         <input type="hidden" name="business" value="399NH5ZGD3HJC" />
         <input type="hidden" name="no_recurring" value="0" />
