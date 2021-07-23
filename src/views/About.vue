@@ -43,6 +43,10 @@ export default defineComponent({
   components: {
     ContactDetail,
   },
+  setup() {
+    var ce = import.meta.glob('/src/assets/*.svg');
+    console.log(ce);
+  },
 });
 </script>
 
