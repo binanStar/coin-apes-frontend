@@ -75,7 +75,6 @@ export default defineComponent({
         ],
       },
       options: {
-        animations: false,
         responsive: true,
         maintainAspectRatio: false,
         plugins: {

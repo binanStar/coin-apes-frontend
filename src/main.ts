@@ -10,6 +10,8 @@ import 'v-tooltip/dist/v-tooltip.css';
 import { VueClipboard } from '@soerenmartius/vue3-clipboard';
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
+import * as Sentry from '@sentry/vue';
+import { Integrations } from '@sentry/tracing';
 
 const options = {
   color: '#7067CF',
@@ -35,6 +37,22 @@ pinia.use(({ store }) => {
   store.toast = app.config.globalProperties.$toast;
 });
 app.use(pinia);
+
+// sentry
+Sentry.init({
+  app,
+  dsn: 'https://809b226370af4a81870f7824180b8406@o442033.ingest.sentry.io/5875750',
+  integrations: [
+    new Integrations.BrowserTracing({
+      routingInstrumentation: Sentry.vueRouterInstrumentation(router),
+      tracingOrigins: ['localhost', 'my-site-url.com', /^\//],
+    }),
+  ],
+  // Set tracesSampleRate to 1.0 to capture 100%
+  // of transactions for performance monitoring.
+  // We recommend adjusting this value in production
+  tracesSampleRate: 1.0,
+});
 
 app.use(router);
 app.use(VueProgressBar, options);

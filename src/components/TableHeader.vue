@@ -5,6 +5,26 @@
     </th>
     <th class="flex col-span-2 items-center">
       <p class="header-text ml-2">Name</p>
+      <VTooltip theme="info-tooltip">
+        <template #default>
+          <img src="../assets/info.svg" class="info" />
+        </template>
+        <template #popper>
+          <div class="p-4">
+            <p class="text-sm">
+              Considered coins:
+              <br />
+              &#8226; In the top 1000 by market cap (based on
+              <span class="text-violet">CoinGecko</span>
+              )
+              <br />
+              OR
+              <br />
+              &#8226; Volume in the last 24h >= $100.000
+            </p>
+          </div>
+        </template>
+      </VTooltip>
     </th>
     <th class="flex col-span-3 items-center">
       <p class="header-text ml-2">Mentions</p>
@@ -44,7 +64,7 @@
         <template #popper>
           <div class="p-4">
             <p class="text-sm">
-              Average sentiment (0 to 1) from post
+              Average sentiment from post
               <br />
               title and/or post content.
             </p>

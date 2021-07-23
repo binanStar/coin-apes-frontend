@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col container px-0">
     <div class="flex overflow-x-auto w-full">
       <table class="justify-center">
         <thead>

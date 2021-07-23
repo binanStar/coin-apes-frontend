@@ -3,7 +3,6 @@ import { DropdownItem } from '../dropdownItem';
 export enum Subreddit {
   CryptoCurrency = 'CryptoCurrency',
   CryptoMarkets = 'CryptoMarkets',
-  CryptoMoonShots = 'CryptoMoonShots',
 }
 
 export const SubredditIcon = new Map<Subreddit, string>([
@@ -14,10 +13,6 @@ export const SubredditIcon = new Map<Subreddit, string>([
   [
     Subreddit.CryptoMarkets,
     'https://b.thumbs.redditmedia.com/JU-wLC9f1XJIRWiHlHls5GDMUcickAvpsS_NkyleyVc.png',
-  ],
-  [
-    Subreddit.CryptoMoonShots,
-    'https://styles.redditmedia.com/t5_9e4pv/styles/communityIcon_vsa30gnhaqn61.jpg?width=256&format=pjpg&s=fa73c36b089134a77f9e6fac5d07eda16b55933f',
   ],
 ]);
 
