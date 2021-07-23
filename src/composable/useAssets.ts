@@ -16,8 +16,8 @@ export default function useAssets() {
   console.log(ce);
   var ce2 = import.meta.globEager('/assets/*.svg');
   console.log(ce2);
-
-  const imgUrl = new URL('aboutImage.png', import.meta.url);
+  var ce3 = import.meta.globEager('.*.svg');
+  console.log(ce3);
 
   const about =
     svgs[env === 'development' ? '/src/assets/aboutImage.svg' : 'aboutImage.svg'].default;
