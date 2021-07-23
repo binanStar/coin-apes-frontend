@@ -7,7 +7,7 @@
       <p class="header-text ml-2">Name</p>
       <VTooltip theme="info-tooltip">
         <template #default>
-          <img class="info" />
+          <img :src="assets.info" class="info" />
         </template>
         <template #popper>
           <div class="p-4">
@@ -39,7 +39,7 @@
       <p class="header-text ml-2">Frequency</p>
       <VTooltip theme="info-tooltip">
         <template #default>
-          <img  class="info" />
+          <img :src="assets.info" class="info" />
         </template>
         <template #popper>
           <div class="p-4">
@@ -59,7 +59,7 @@
       <p class="header-text ml-2">Sentiment</p>
       <VTooltip theme="info-tooltip">
         <template #default>
-          <img  class="info" />
+          <img :src="assets.info" class="info" />
         </template>
         <template #popper>
           <div class="p-4">
@@ -81,8 +81,15 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/runtime-core';
+import useAssets from '../composable/useAssets';
 
-export default defineComponent({});
+export default defineComponent({
+  setup() {
+    return {
+      assets: useAssets(),
+    };
+  },
+});
 </script>
 
 <style lang="postcss" scoped>

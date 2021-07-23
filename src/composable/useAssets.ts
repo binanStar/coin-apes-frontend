@@ -14,7 +14,7 @@ export default function useAssets() {
     ethqr: pngs['/src/assets/ethqr.png'].default,
     exchanges: svgs['/src/assets/exchanges.svg'].default,
     github: svgs['/src/assets/github.svg'].default,
-    info: svgs['/src/assets/Info.svg'].default,
+    info: svgs['/src/assets/info.svg'].default,
     linkedin: svgs['/src/assets/linkedin.svg'].default,
     logo: svgs['/src/assets/logo.svg'].default,
     mail: svgs['/src/assets/mail.svg'].default,
