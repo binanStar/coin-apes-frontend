@@ -24,7 +24,7 @@
       <span class="text-violet">certainty</span>
     </p>
     <div class="flex flex-row mt-8 lg:mt-12 space-x-8">
-      <img src="src/assets/paypal.svg" />
+      <img src="assets/paypal.svg" />
       <form action="https://www.paypal.com/donate" method="post" target="_top">
         <input type="hidden" name="business" value="399NH5ZGD3HJC" />
         <input type="hidden" name="no_recurring" value="0" />
@@ -50,24 +50,24 @@
     <div class="flex flex-col lg:flex-row lg:space-x-16 xl:space-x-32 mb-8 mt-6 lg:mt-16">
       <DonationCard
         :title="'Bitcoin'"
-        :icon="'src/assets/btc.png'"
+        :icon="'assets/btc.png'"
         :address="'12GQ5kabL17JLsdTBuJVF3LoqDzBF1M9mQ'"
-        :qr="'src/assets/btcqr.jpeg'"
+        :qr="'assets/btcqr.jpeg'"
       ></DonationCard>
       <DonationCard
         class="mt-6 lg:mt-0"
         :title="'Ethereum'"
-        :icon="'src/assets/eth.png'"
+        :icon="'assets/eth.png'"
         :address="'0x25c54f89da2cd617151e515aeb65fff83b8b00b2'"
-        :qr="'src/assets/ethqr.png'"
+        :qr="'assets/ethqr.png'"
       ></DonationCard>
 
       <DonationCard
         class="mt-6 lg:mt-0"
         :title="'elrond'"
-        :icon="'src/assets/egld.png'"
+        :icon="'assets/egld.png'"
         :address="'erd1ttf0fx4t4hj6f8vkvwvhsfglr5s0qutyvl0qw3fz50mn7mnzkszqcmufrs'"
-        :qr="'src/assets/egldqr.png'"
+        :qr="'@/assets/egldqr.png'"
       ></DonationCard>
     </div>
   </div>
