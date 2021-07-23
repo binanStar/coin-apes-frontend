@@ -10,7 +10,6 @@ export default defineConfig({
       { find: '@', replacement: '/src' },
       { find: 'views', replacement: '/src/views' },
       { find: 'components', replacement: '/src/components' },
-      { find: 'assets', replacement: '/src/assets' },
     ],
   },
 });
