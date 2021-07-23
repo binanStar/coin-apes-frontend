@@ -27,10 +27,10 @@
           ></ContactDetail>
         </div>
       </div>
-      <img
+      <!-- <img
         src="src/assets/aboutimage.svg"
         class="w-[320px] h-[268px] lg:w-[462px] lg:h-[387px] mt-12 lg:mt-0 md:ml-auto lg:mr-[112px]"
-      />
+      /> -->
     </div>
   </div>
 </template>
