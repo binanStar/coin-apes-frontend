@@ -20,7 +20,7 @@
               <br />
               OR
               <br />
-              &#8226; Volume in the last 24h >= $100.000
+              &#8226; Volume in the last 24h >= $1,000,000
             </p>
           </div>
         </template>
