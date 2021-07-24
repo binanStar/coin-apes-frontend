@@ -72,7 +72,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue';
+import { defineComponent, inject, ref, watch } from 'vue';
 import Multiselect from '@vueform/multiselect';
 import { DropdownItem } from '../types/dropdownItem';
 import DropdownOption from './DropdownOption.vue';
@@ -93,6 +93,8 @@ export default defineComponent({
     DropdownOption,
   },
   setup() {
+    const gtag = inject<any>('gtag');
+
     const selectedSubreddits = ref<Array<string>>();
     selectedSubreddits.value = new Array<string>();
 
@@ -125,18 +127,38 @@ export default defineComponent({
 
     watch(selectedSubreddits, () => {
       store.setSubreddits(selectedSubreddits.value?.map((e) => <Subreddit>e) ?? []);
+      gtag.event('filter_change', {
+        event_category: 'filters',
+        event_label: 'subreddit',
+        value: selectedSubreddits.value,
+      });
     });
 
     watch(selectedInterval, () => {
       store.setInterval(<RedditInterval>selectedInterval.value ?? undefined);
+      gtag.event('filter_change', {
+        event_category: 'filters',
+        event_label: 'interval',
+        value: selectedInterval.value,
+      });
     });
 
     watch(selectedCategory, () => {
       store.setModel(<MetricModel>selectedCategory.value ?? undefined);
+      gtag.event('filter_change', {
+        event_category: 'filters',
+        event_label: 'category',
+        value: selectedCategory.value,
+      });
     });
 
     watch(searchText, (newValue) => {
       store.setQuery(newValue);
+      gtag.event('filter_change', {
+        event_category: 'filters',
+        event_label: 'query',
+        value: newValue,
+      });
     });
 
     const assets = useAssets();

@@ -12,6 +12,7 @@ import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
 import * as Sentry from '@sentry/vue';
 import { Integrations } from '@sentry/tracing';
+import VueGtag from 'vue-gtag';
 
 const options = {
   color: '#7067CF',
@@ -30,6 +31,13 @@ const options = {
 const app = createApp(App);
 app.use(VueToast);
 app.provide('toast', app.config.globalProperties.$toast);
+
+// gtag
+app.use(VueGtag, {
+  config: { id: 'G-25GDWSNTH3' },
+  router,
+});
+app.provide('gtag', app.config.globalProperties.$gtag);
 
 // pinia
 const pinia = createPinia();

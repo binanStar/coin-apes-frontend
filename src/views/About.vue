@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, inject } from 'vue';
 import ContactDetail from '../components/ContactDetail.vue';
 import useAssets from '../composable/useAssets';
 
@@ -46,7 +46,6 @@ export default defineComponent({
   },
   setup() {
     var assets = useAssets();
-
     return {
       assets,
     };

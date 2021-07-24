@@ -19,6 +19,7 @@
     "qs": "^6.10.1",
     "v-tooltip": "^4.0.0-alpha.1",
     "vue": "^3.0.5",
+    "vue-gtag": "^2.0.1",
     "vue-infinite-loading": "^2.4.5",
     "vue-router": "^4.0.8",
     "vue-toast-notification": "^2.0.0",

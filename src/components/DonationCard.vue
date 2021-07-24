@@ -13,6 +13,7 @@
         <button
           v-clipboard="address"
           class="bg-violet w-32 h-8 rounded-md text-white hover:bg-violetLight mt-6"
+          @click="onClick"
         >
           COPY
         </button>
@@ -27,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, inject } from 'vue';
 
 export default defineComponent({
   props: {
@@ -35,6 +36,21 @@ export default defineComponent({
     icon: String,
     qr: String,
     address: String,
+  },
+  setup(props) {
+    const gtag = inject<any>('gtag');
+
+    const onClick = () => {
+      gtag.event('donation_clicked', {
+        event_category: 'donation',
+        event_label: 'donation',
+        value: props.title,
+      });
+    };
+
+    return {
+      onClick,
+    };
   },
 });
 </script>
