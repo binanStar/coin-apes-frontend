@@ -4,6 +4,7 @@ import App from './App.vue';
 import router from './router';
 import './styles/index.css';
 import './styles/multiselect.css';
+import './styles/toggle.css';
 import VueProgressBar from '@aacassandra/vue3-progressbar';
 import VTooltipPlugin from 'v-tooltip';
 import 'v-tooltip/dist/v-tooltip.css';
@@ -13,7 +14,9 @@ import 'vue-toast-notification/dist/theme-sugar.css';
 import * as Sentry from '@sentry/vue';
 import { Integrations } from '@sentry/tracing';
 import VueGtag from 'vue-gtag';
+import { VueCookieNext } from 'vue-cookie-next';
 
+// toast
 const options = {
   color: '#7067CF',
   failedColor: '#D62828',
@@ -32,10 +35,14 @@ const app = createApp(App);
 app.use(VueToast);
 app.provide('toast', app.config.globalProperties.$toast);
 
+// cookies
+app.use(VueCookieNext);
+
 // gtag
 app.use(VueGtag, {
   config: { id: 'G-25GDWSNTH3' },
   router,
+  enabled: false,
 });
 app.provide('gtag', app.config.globalProperties.$gtag);
 
@@ -66,6 +73,7 @@ app.use(router);
 app.use(VueProgressBar, options);
 app.provide('progressBar', app.config.globalProperties.$Progress);
 app.use(VueClipboard);
+
 app.use(VTooltipPlugin, {
   themes: {
     'info-tooltip': {

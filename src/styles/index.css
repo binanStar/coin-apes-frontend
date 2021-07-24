@@ -30,6 +30,10 @@
   @apply text-sm lg:text-xl text-white font-normal;
 }
 
+.btn-sm {
+  @apply bg-violet w-32 h-8 rounded-md text-white hover:bg-violetLight;
+}
+
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent; /* make scrollbar transparent */

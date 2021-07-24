@@ -18,7 +18,7 @@
           <router-link class="text-footer hover:text-violet" to="privacy">
             Privacy Policy
           </router-link>
-          <a class="text-footer hover:text-violet">Cookies</a>
+          <router-link class="text-footer hover:text-violet" to="cookies">Cookies</router-link>
         </div>
       </div>
     </div>

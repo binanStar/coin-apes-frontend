@@ -5,6 +5,7 @@ import About from '../views/About.vue';
 import Support from '../views/Support.vue';
 import Privacy from '../views/Privacy.vue';
 import Terms from '../views/Terms.vue';
+import Cookies from '../views/Cookies.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -31,6 +32,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/terms',
     name: 'terms',
     component: Terms,
+  },
+  {
+    path: '/cookies',
+    name: 'cookies',
+    component: Cookies,
   },
   { path: '/:pathMatch(.*)*', component: NotFound },
 ];

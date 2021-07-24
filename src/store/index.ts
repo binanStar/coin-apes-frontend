@@ -8,6 +8,7 @@ import qs from 'qs';
 import { MetricEntry } from '../types/metricEntry';
 import axios, { AxiosError, CancelTokenSource } from 'axios';
 import * as Sentry from '@sentry/vue';
+import { useCookie } from 'vue-cookie-next';
 
 export type RootState = {
   entries: Array<MetricEntry>;
