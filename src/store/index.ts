@@ -97,12 +97,6 @@ export const useStore = defineStore({
           }
         } catch (err) {
           Sentry.captureException(err);
-          this.toast.error(
-            'Ops, looks like something is not working right now, please try again later.',
-            {
-              position: 'top-right',
-            }
-          );
         }
       }
     },
