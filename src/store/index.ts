@@ -7,6 +7,7 @@ import { RedditMetric } from '../types/redditMetric';
 import qs from 'qs';
 import { MetricEntry } from '../types/metricEntry';
 import axios, { AxiosError, CancelTokenSource } from 'axios';
+import * as Sentry from '@sentry/vue';
 
 export type RootState = {
   entries: Array<MetricEntry>;
@@ -95,6 +96,7 @@ export const useStore = defineStore({
             this.canFetchMore = false;
           }
         } catch (err) {
+          Sentry.captureException(err);
           this.toast.error(
             'Ops, looks like something is not working right now, please try again later.',
             {
