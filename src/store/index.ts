@@ -95,17 +95,12 @@ export const useStore = defineStore({
             this.canFetchMore = false;
           }
         } catch (err) {
-          console.error(err);
-          if (axios.isAxiosError(err)) {
-            if ((<AxiosError>err).code === '429') {
-              this.toast.warning(
-                'API calls quota exceeded, consider supporting the project to allow higher limits.',
-                {
-                  position: 'top-right',
-                }
-              );
+          this.toast.error(
+            'Ops, looks like something is not working right now, please try again later.',
+            {
+              position: 'top-right',
             }
-          }
+          );
         }
       }
     },
