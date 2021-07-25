@@ -1,4 +1,9 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import {
+  createRouter,
+  createWebHistory,
+  RouteLocationNormalized,
+  RouteRecordRaw,
+} from 'vue-router';
 import Reddit from '../views/Reddit.vue';
 import NotFound from '../views/NotFound.vue';
 import About from '../views/About.vue';
@@ -44,6 +49,9 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior() {
+    document.getElementById('app')?.scrollIntoView();
+  },
 });
 
 export default router;
