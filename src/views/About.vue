@@ -33,7 +33,9 @@
       />
     </div>
     <div class="container flex flex-col mt-9 lg:mt-24 lg:ml-44 md:mr-4">
-      <p class="text-white self-center lg:self-start text-3xl lg:text-4xl lg:mb-6">FAQ</p>
+      <p class="text-white font-medium self-center lg:self-start text-3xl lg:text-4xl lg:mb-6">
+        FAQ
+      </p>
       <p class="question">🕒 How often is the data updated?</p>
       <p class="ans">
         Our server constantly works to provide the latest data. Currently, the data is updated based
@@ -91,7 +93,7 @@ export default defineComponent({
 
 <style lang="postcss" scoped>
 .question {
-  @apply text-white text-xl lg:text-2xl text-center md:text-left mt-4;
+  @apply text-white font-medium text-xl lg:text-2xl text-center md:text-left mt-4;
 }
 
 .ans {
