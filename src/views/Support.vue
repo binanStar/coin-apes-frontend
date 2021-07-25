@@ -14,6 +14,8 @@
       features.
     </p>
     <br />
+    <p class="text-big text-center">We thank you deeply for any contribution 🙏</p>
+    <br />
     <p class="text-big text-center">
       <span class="text-violet">DISCLAIMER:</span>
       It is possible that in the future Coin Apes will provide subscription based premium features.

@@ -43,7 +43,7 @@
         </template>
         <template #popper>
           <div class="p-4">
-            <p class="text-sm">Ploted mentions base on Interval</p>
+            <p class="text-sm">Ploted mentions based on Interval</p>
             <p class="text-sm mt-2">
               E.g. When day is selected:
               <br />
