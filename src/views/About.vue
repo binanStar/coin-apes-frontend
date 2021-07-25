@@ -32,7 +32,7 @@
         class="w-[320px] h-[268px] lg:w-[462px] lg:h-[387px] mt-12 lg:mt-0 md:ml-auto lg:mr-[112px]"
       />
     </div>
-    <div class="container flex flex-col mt-9 lg:mt-24 lg:ml-44 md:mr-4">
+    <div class="container flex flex-col mt-9 lg:mt-24 lg:pl-28 md:pr-4">
       <p class="text-white font-medium self-center lg:self-start text-3xl lg:text-4xl lg:mb-6">
         FAQ
       </p>
