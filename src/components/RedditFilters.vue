@@ -72,7 +72,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, ref, watch } from 'vue';
+import { defineComponent, inject, onMounted, ref, watch } from 'vue';
 import Multiselect from '@vueform/multiselect';
 import { DropdownItem } from '../types/dropdownItem';
 import DropdownOption from './DropdownOption.vue';
@@ -94,15 +94,16 @@ export default defineComponent({
   },
   setup() {
     const gtag = inject<any>('gtag');
+    const store = useStore();
 
     const selectedSubreddits = ref<Array<string>>();
-    selectedSubreddits.value = new Array<string>();
+    selectedSubreddits.value = store.subreddits;
 
     const subreddits = ref<Array<DropdownItem>>();
     subreddits.value = Object.values(Subreddit).map((s) => subredditToDropdownItem(s));
 
     const selectedInterval = ref<string>();
-    selectedInterval.value = '';
+    selectedInterval.value = store.interval;
 
     const intervals = ref<Array<DropdownItem>>();
     intervals.value = Object.values(RedditInterval).map((s) => redditIntervalToDropdownItem(s));
@@ -111,19 +112,16 @@ export default defineComponent({
     const intervalsDropdownHeight = 40 * intervals.value.length + 5;
 
     const selectedCategory = ref<string>();
-    selectedCategory.value = '';
+    selectedCategory.value = store.model;
 
     const categories = ref<Array<DropdownItem>>();
     categories.value = Object.values(MetricModel).map((s) => metricModelToDropdownItem(s));
 
-    const searchText = useDebouncedRef('', 300);
-    searchText.value = '';
+    const searchText = useDebouncedRef(store.query, 300);
 
     const clearClicked = () => {
       searchText.value = '';
     };
-
-    const store = useStore();
 
     watch(selectedSubreddits, () => {
       store.setSubreddits(selectedSubreddits.value?.map((e) => <Subreddit>e) ?? []);
