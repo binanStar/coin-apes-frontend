@@ -7,7 +7,9 @@
       <p class="header-text ml-2">Name</p>
       <VTooltip theme="info-tooltip">
         <template #default>
-          <img :src="assets.info" class="info" />
+          <div class="p-2">
+            <img :src="assets.info" class="info" />
+          </div>
         </template>
         <template #popper>
           <div class="p-4">
@@ -39,7 +41,9 @@
       <p class="header-text ml-2">Frequency</p>
       <VTooltip theme="info-tooltip">
         <template #default>
-          <img :src="assets.info" class="info" />
+          <div class="p-2">
+            <img :src="assets.info" class="info" />
+          </div>
         </template>
         <template #popper>
           <div class="p-4">
@@ -59,7 +63,9 @@
       <p class="header-text ml-2">Sentiment</p>
       <VTooltip theme="info-tooltip">
         <template #default>
-          <img :src="assets.info" class="info" />
+          <div class="p-2">
+            <img :src="assets.info" class="info" />
+          </div>
         </template>
         <template #popper>
           <div class="p-4">
@@ -96,8 +102,7 @@ export default defineComponent({
 .header-text {
   @apply text-sm font-medium text-white;
 }
-
 .info {
-  @apply h-[12px] w-[12px] ml-2;
+  @apply h-[12px] w-[12px];
 }
 </style>
