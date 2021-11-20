@@ -4,9 +4,9 @@ export enum RedditInterval {
   Hour = 'Hour',
   Day = 'Day',
   Week = 'Week',
-  Month = 'Month',
-  Year = 'Year',
-  All = 'All',
+  // Month = 'Month',
+  // Year = 'Year',
+  // All = 'All',
 }
 
 export function redditIntervalToDropdownItem(redditInterval: RedditInterval): DropdownItem {

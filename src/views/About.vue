@@ -45,7 +45,9 @@
         <br />
         Day - every hour
         <br />
-        Week, Month, Year, All - every day
+        Week - every day
+        <br />
+        Month, Year, All Time -> Temporary disabled because of the large amount of data
         <br />
         The rest of the data (coins and exchanges) are also updated every day.
       </p>
