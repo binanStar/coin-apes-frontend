@@ -1,6 +1,11 @@
 <template>
   <div class="container flex flex-col items-center self-center mb-16">
     <h1 class="text-h1 mt-12">About Coin Apes</h1>
+    <div class="text-white text-md self-center text-center mt-8 w-80 lg:w-[540px]">
+      <p>⚠️ Project no longer supported ⚠️</p>
+      <p>As of Winter 2021 Coin Apes no longer provides real time data</p>
+      <p>The project currently is not getting any updates</p>
+    </div>
     <div class="container flex flex-col items-center md:flex-row mt-12 md:mt-24 ml-6 mr-6">
       <div class="flex flex-col items-center">
         <p class="text-big text-center w-80 lg:w-[540px]">
@@ -16,8 +21,8 @@
             :image="assets.mail"
           ></ContactDetail>
           <ContactDetail
-            :text="'Lucian Eduard Ghimpu'"
-            :link="'https://github.com/GhimpuLucianEduard'"
+            :text="'Coin Apes Code'"
+            :link="'https://github.com/CoinApes/coin-apes-web'"
             :image="assets.github"
           ></ContactDetail>
           <ContactDetail
