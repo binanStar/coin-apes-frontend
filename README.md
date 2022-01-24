@@ -7,7 +7,8 @@ The project was supposed to provide historic and real time data about crypto cur
 This specific project is built with:
 
 1. Vue3 with Composition API 😎 
-2. Vite ⚡
-3. Tailwind CSS 🎨 
+3. Vite ⚡
+4. Typescript 📐
+5. Tailwind CSS 🎨 
 
 _backend project is private for now_
